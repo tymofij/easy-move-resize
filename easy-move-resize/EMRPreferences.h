@@ -1,6 +1,6 @@
 // Preferences can alternativevly be managed from the Terminal:
 //   Read:
-//     `defaults write org.dmarcotte.Easy-Move-Resize ModifierFlags CMD,CTRL`
+//     `defaults read org.dmarcotte.Easy-Move-Resize ModifierFlags CMD,CTRL`
 //   Write:
 //     `defaults write org.dmarcotte.Easy-Move-Resize ModifierFlags CMD,CTRL`
 //   Note that deleting this preference or writing invalid keys may cause trouble and require that
@@ -8,6 +8,8 @@
 #ifndef EMRPreferences_h
 #define EMRPreferences_h
 
+#define SHOULD_BRING_WINDOW_TO_FRONT @"BringToFront"
+#define SHOULD_MIDDLE_CLICK_RESIZE @"MiddleClickResize"
 #define MODIFIER_FLAGS_DEFAULTS_KEY @"ModifierFlags"
 #define CTRL_KEY @"CTRL"
 #define SHIFT_KEY @"SHIFT"
@@ -18,6 +20,9 @@
 @interface EMRPreferences : NSObject {
     
 }
+
+@property (nonatomic) BOOL shouldBringWindowToFront;
+@property (nonatomic) BOOL shouldMiddleClickResize;
 
 // Initialize an EMRPreferences, persisting settings to the given userDefaults
 - (id)initWithUserDefaults:(NSUserDefaults *)defaults;
